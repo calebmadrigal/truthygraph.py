@@ -1,17 +1,17 @@
 __author__ = 'Caleb Madrigal'
 __date__ = '2025-05-15'
+__updated__ = '2025-05-17'
 
 import os
 import sys
 import time
 import math
-import colorsys
 from PIL import Image
 
 # ###### View stuff ###### #
 
 scale_factor = 1
-img_size = (int(3000*scale_factor), int(2000*scale_factor))
+img_size = (int(1024*scale_factor), int(1024*scale_factor))
 CENTER = (0, 0)
 ZOOM = 200
 print(f'Center: {CENTER}')
@@ -71,14 +71,10 @@ def make_linear_mapper(in_range, out_range, int_out=False):
 
 # ###### Math ###### #
 
-def equation(x, y, fuzzy_level=1/2):
-    amplitude = 1
-    frequency = 1
-    phase = 0
-
-    equation_left = y
-    equation_right = amplitude * math.sin(2 * math.pi * frequency * x + phase)
-
+def equation(x, y, fuzzy_level=1/4):
+    # Circle equation: x^2 + y^2 = radius^2
+    equation_left = x**2 + y**2
+    equation_right = 1
     return abs(equation_left - equation_right)**(fuzzy_level)
 
 
@@ -96,8 +92,7 @@ def build_frame(frame_num, rotate=None, show_image=False):
 
     def magenta_color_map(value):
         color_val = error_to_color_map(value)
-        # Magenta = Red + Blue
-        return (color_val, 0, color_val)
+        return (color_val, 0, color_val)   # Magenta = Red + Blue
 
     for x_pixel in range(img_size[0]):
         for y_pixel in range(img_size[1]):
