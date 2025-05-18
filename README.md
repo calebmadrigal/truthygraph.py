@@ -13,5 +13,5 @@ Truthygraph is intended as a starting point for doing art using math and code. T
 
 ## License
 
-You are free to copy `truthygraph.py` as a starting point for doing your own art, or graphing equations, or whatever else you want. If you do use truthygraph, giving credit is appreciated, but not required.
+You are free to copy `truthygraph.py` as a starting point for doing your own art, or graphing equations, or whatever else you want. If you do use truthygraph to do art, or as a starting point for other software, giving credit is appreciated, but not required.
 
